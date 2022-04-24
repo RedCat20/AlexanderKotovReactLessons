@@ -28,7 +28,7 @@ console.log(checked)
         <>
         <div className="list-item-container" key={item.id}>
             {/*при удалении checked работает Клик по каждому input*/}
-            <input type="checkbox" onChange={chengeCheckbox} onClick={handleListIncrement} checked={check} />
+            <input type="checkbox" onChange={chengeCheckbox} onClick={handleListIncrement} defaultChecked={check} />{/*checked={check}*/}
             <span ref={listItem}>{item.name}</span>
         </div>
         </>)
