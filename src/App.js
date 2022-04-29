@@ -1,6 +1,5 @@
 import './App.scss';
 import {ToDoList} from "./ToDoList";
-import {useEffect, useState} from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import MainPage from "./components/MainPage/MainPage";
 import Calendar from "./components/Calendar/Calendar";
@@ -25,54 +24,43 @@ const items = [
 
 function App() {
 
-    const [count, setCount] = useState(0);
+    //const [count, setCount] = useState(0);
 
-    const handleIncrement = () => {
-        setCount(prevCount => prevCount + 1);
-        console.log(count);
-
-    };
-
-    useEffect(() => {
-        // if (count > 0) {
-        //   alert(`Count > 0, ${count}, effect`);
-        // }
-    }, [count])
+    // const handleIncrement = () => {
+    //     // setCount(prevCount => prevCount + 1);
+    //     //console.log(count);
+    //
+    // };
 
     return (
         <div className="app-container">
             <BrowserRouter>
                 {/*<header>*/}
-                <Navbar Navbar bg="primary" variant="dark">
-                    <Container>
-                        {/*<Navbar.Brand to="/mainpage">Navbar</Navbar.Brand>*/}
-                        <Nav className="me-auto">
-                            <Nav.Link href="/mainpage">Главная (обо мне)</Nav.Link>
-                            <Nav.Link href="/todolist">Ту ду лист</Nav.Link>
-                            <Nav.Link href="/calendar">Календарь</Nav.Link>
-                        </Nav>
-                    </Container>
-                </Navbar>
-
-                    {/*<Link to="/mainpage">Главная (обо мне)</Link>*/}
-                    {/*<Link to="/todolist">Ту ду лист</Link>*/}
-                    {/*<Link to="/calendar">Календарь</Link>*/}
+                    <Navbar Navbar expand="lg" bg="primary" variant="dark">
+                        <Container>
+                            <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                            <Navbar.Collapse id="basic-navbar-nav">
+                                <Nav className="me-auto">
+                                    <Nav.Link href="/mainpage">Главная (обо мне)</Nav.Link>
+                                    <Nav.Link href="/todolist">Ту ду лист</Nav.Link>
+                                    <Nav.Link href="/calendar">Календарь</Nav.Link>
+                                </Nav>
+                            </Navbar.Collapse>
+                        </Container>
+                    </Navbar>
                 {/*</header>*/}
 
                 <main>
-                    <h2>Main text</h2>
-                    <hr/>
                     <Routes>
                         <Route path='/mainpage' element={<MainPage/>}/>
                         <Route path='/todolist'
-                               element={<ToDoList items={items} cats="cat" handleIncrement={handleIncrement}/>}/>
+                               element={<ToDoList items={items} cats="cat"
+                                                 />}/> {/*// count={count} handleIncrement={handleIncrement}*/}
                         <Route path='/calendar' element={<Calendar/>}/>
                     </Routes>
-                    <div>Clicks on to do {count} times</div>
+                    <hr/>
                 </main>
-
                 <footer>Footer text</footer>
-
             </BrowserRouter>
         </div>
     );
