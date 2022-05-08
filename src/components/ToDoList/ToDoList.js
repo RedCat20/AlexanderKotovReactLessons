@@ -1,5 +1,5 @@
 import './ToDoList.scss';
-import {ToDoItem} from "./ToDoItem";
+import {ToDoItem} from "../ToDoItem/ToDoItem";
 import {useEffect, useRef, useState} from 'react';
 import {Button} from "react-bootstrap";
 
